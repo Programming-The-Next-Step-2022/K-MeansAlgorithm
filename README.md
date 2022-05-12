@@ -31,3 +31,8 @@ Repeat steps 3 till 5 till the centroids don't change anymore.
 ## Required packages
 philentrophy for the function distance
 ggplot2 for the plotting
+
+## Check if I can see changes!
+
+Dubbel check
+
