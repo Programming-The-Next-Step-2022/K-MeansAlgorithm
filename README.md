@@ -1,8 +1,7 @@
-## K-MeansAlgorithm
-# Project for the course Programming: The Next Step
-# Rolien 
-# Master Brain and Cognitive Sciences
-# University of Amsterdam
+### K-MeansAlgorithm
+## Project for the course Programming: The Next Step
+## Rolien 
+## Master Brain and Cognitive Sciences - UvA
 
 ## Project description
 This project contains a package in R, that allows data to be classified into clusters with k-means clustering.
