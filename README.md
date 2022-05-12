@@ -1,1 +1,1 @@
-# UnderConstruction
+# K-Means-algorithm package
