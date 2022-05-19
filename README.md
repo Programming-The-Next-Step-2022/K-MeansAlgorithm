@@ -30,8 +30,8 @@ Repeat steps 3 till 5 till the centroids don't change anymore.
 
 ## Required packages
 readxl
-dplyr 
-ggplot2 
+dplyr
+ggplot2
 
 
 
