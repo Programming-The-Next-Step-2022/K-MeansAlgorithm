@@ -14,16 +14,16 @@ K-means clustering is an unsupervised learning algorithm, which clusters data in
 Select the number K to decide the number of clusters.
 
 **Step 2**
-Select random K points or centroids. These points don't have to be inputs from the dataset, but can be randomly selected points. These are the initial centroids.
+Select random K points or centroids. These points are the initial centroids.
 
 **Step 3**
-Find the euclidean distance between the k points and the centroids. The function distance from the philentropy library is used for this calculation. (#or maybe code that function from scratch). 
+Find the euclidean distance between the k points and the centroids. The following formula is used: sqrt(sum(a^2+b^2).
  
 **Step 4**
-Find the nearset centroid for each datapoint. 
+Find the nearset centroid for each datapoint. This is done by selecting the column index with the smallest distance with the which.min function.
 
 **Step 5**
-Update the centroid location
+Update the centroid location. In this step we calculate new centroids: by calculating the mean of all the values of the datapoints in a cluster.
 
 **Step 6**
 Repeat steps 3 till 5 till the centroids don't change anymore. 
