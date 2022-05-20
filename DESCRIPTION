@@ -1,4 +1,4 @@
-Package: myKMeansAlgorithm
+Package: myKMeans
 Type: Package
 Title: Clusters data points into distinct non-overlapping clusters.
 Version: 0.1.0
@@ -10,4 +10,9 @@ Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.2
 Imports:
-  
+  readxl,
+  ggplot2,
+  dplyr
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
