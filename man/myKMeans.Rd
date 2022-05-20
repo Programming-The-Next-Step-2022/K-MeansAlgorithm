@@ -11,18 +11,18 @@ An object of class \code{list} of length 2.
 myKMeans
 }
 \arguments{
-\item{centroid}{Takes random numbers from the datapoints. Gives the created 
+\item{centroid}{Takes random numbers from the datapoints. Gives the created
 centroids as integers. Length: 1 to the length of the dataset.}
 
 \item{centroids}{Makes a matrix of the selected centroids.}
 
-\item{myPoints}{This is the dataset with the datapoints.}
+\item{DF}{This is the dataset with the datapoints.}
 
 \item{euclideanDistance}{Find the euclidean distance between the k points
-and the centroids. The following formula is used: 
+and the centroids. The following formula is used:
 sqrt(sum(a^2+b^2) and stores it as a list.}
 
-\item{cluster}{Selects the most smallest distance of the column index with 
+\item{cluster}{Selects the most smallest distance of the column index with
 the build-in which.min function and stores is as a factor.}
 
 \item{euclideanDistanceCluster}{Assigns the euclidean distances to a cluster.}
@@ -31,11 +31,11 @@ the build-in which.min function and stores is as a factor.}
 euclidean distances. Gives a matrix with these
 variances.}
 
-\item{newCentroids}{Generates the new centroids based on the means of all the 
+\item{newCentroids}{Generates the new centroids based on the means of all the
 values of the datapoints in a cluster.}
 }
 \value{
-A list with the number of the cluster assigned to the datapoints and a 
+A list with the number of the cluster assigned to the datapoints and a
 matrix with the within cluster variances.
 }
 \description{
@@ -46,7 +46,7 @@ This packages uses the euclidean distance between the k data points and the
 means of the clusters (centroids).
 }
 \details{
-For more details on K Means Clustering, see the Wikipedia 
+For more details on K Means Clustering, see the Wikipedia
 page \url{https://en.wikipedia.org/wiki/K-means_clustering} for more details.
 }
 \section{myKMeans}{
@@ -55,9 +55,6 @@ NA
 
 \examples{
 KM <- myKMeans(myPoints, KCluster = 2, KIterations = 10)
-
-
-
 
 
 }
