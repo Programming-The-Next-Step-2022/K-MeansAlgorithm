@@ -10,12 +10,8 @@ library(readxl)
 library(dplyr)
 
 
-#' @export
-importData <- function(filename) {
-  Data <- read_excel(filename)
-}
 
-myPoints <- importData("myDataSet.xlsx")
+myPoints <- read_excel("myDataSet.xlsx")
 myPoints
 
 ## Step 1: Initialize K Clusters
@@ -40,9 +36,7 @@ ggplot()+
 # the euclidean distance formula
 # euclidean distance function
 
-centroid <- sample.int(dim(myPoints)[1],KCluster)
-centroid
-class(centroid)
+
 ##
 
 euclideanDistanceKClusters <- function(myPoints, centroids){
@@ -56,14 +50,44 @@ euclideanDistanceKClusters <- function(myPoints, centroids){
 
 # Function for the K means clustering algorithm
 #' Clusters data points into distinct non-overlapping clusters.
+#' 
+#' The function \emph{myKMeans} clusters datapoints into distinct non-over
+#' lapping clusters.
 #'@export
 #'
-#'@param centroid Takes random numbers from the datapoints to create centroids.
-#'@param centroids Makes a matrix of the centroids
-#'@param myPoints This is the dataset with the datapoints
-#'@param withinClusterVariances The within cluster variances. Is equal to the squared euclidean distances between the datapoits and the assigned centroids.
-#'@euclideanDistance The dis
-KMeansRolien <- function(myPoints, KClusters, KIterations){
+#'@param centroid Takes random numbers from the datapoints. Gives the created 
+#'                centroids as integers. Length: 1 to the length of the dataset. 
+#'@param centroids Makes a matrix of the selected centroids.  
+#'@param myPoints This is the dataset with the datapoints. 
+#'@param withinClusterVariances The within cluster variances. Is equal to the 
+#'                              squared euclidean distances between the 
+#'                              datapoits and the assigned centroids.
+#'@param euclideanDistance Find the euclidean distance between the k points
+#'                         and the centroids. The following formula is used: 
+#'                         sqrt(sum(a^2+b^2) and stores it as a list.  
+#'@param cluster Selects the most smallest distance of the column index with 
+#'               the build-in which.min function and stores is as a factor. 
+#'@param euclideanDistanceCluster Assigns the euclidean distances to a cluster.
+#'@param withinClusterVariances Within cluster variances is equal to squared
+#'                              euclidean distances. Gives a matrix with these
+#'                              variances.
+#'@param newCentroids Generates the new centroids based on the means of all the 
+#'                    values of the datapoints in a cluster.
+#'
+#'@return A list with the number of the cluster assigned to the datapoints and a 
+#'matrix with the within cluster variances.
+#'
+#'@details For more details on K Means Clustering, see the Wikipedia 
+#'page \url{https://en.wikipedia.org/wiki/K-means_clustering} for more details.
+#'
+#'@examples KM <- myKMeans(myPoints, KCluster = 2, KIterations = 10)
+#'
+#'
+#'
+#'
+#'
+#'@export
+myKMeans <- function(myPoints, KClusters, KIterations){
   # create random centroids from the dataset and make a mastrix
   centroid <- sample.int(dim(myPoints)[1],KCluster)
   centroids <- data.matrix(myPoints[centroid,])
@@ -71,7 +95,6 @@ KMeansRolien <- function(myPoints, KClusters, KIterations){
   myPoints <- as.matrix(myPoints)
   # initialize the withing cluster Variances
   withinClusterVariances <- c()
-
   for(i in 1:KIterations){
     # initialize the euclidean distance
     euclideanDistance <- matrix(0, nrow = nrow(myPoints), ncol = KCluster)
@@ -80,14 +103,11 @@ KMeansRolien <- function(myPoints, KClusters, KIterations){
       for(i in 1:nrow(myPoints))
       {
         # QUESTION I want to call here my euclideanDistance function, but it doesn't work
-
-
         euclideanDistance[i,j] = sqrt(sum((myPoints[i,1:ncol(myPoints)] - centroids[j,1:ncol(centroids)])^2))
       }
     }
     ## Step 4: assign each datapoint to the nearest centroid
-    # select the column index with the most smallest distance of the cluster
-    # cluster for each observation: smallest distance to the observation
+    # Selects the most smallest distance of the column index. 
     cluster <- factor(apply(euclideanDistance, 1, which.min))
     euclideanDistanceCluster <- list()
     for (i in 1:KCluster){
@@ -120,17 +140,17 @@ KMeansRolien <- function(myPoints, KClusters, KIterations){
 # KIterations
 
 ## Initialize Iterations and call function
-KIterations = 10
+KIterations <- 10
 
 
-KMeansRolien <- KMeansRolien(myPoints, KCluster, KIterations)
-KMeansRolien
+myKMeans <- myKMeans(myPoints, KCluster, KIterations)
+myKMeans
 
 ## Plot datapoints and centroids again but now with the clusters
 ##  QUESTION: This doesn't work: I want to plot the different colors in clusters
-ggplot()+
+ggplot() +
   geom_point(aes(Vector1,Vector2), col = "blue", data = myPoints) +
-  geom_text(aes(label = KCluster, color = KMeansRolien$Cluster)) +
+  geom_text(aes(label = KCluster, color = cluster)) +
   theme_classic()
 
 
