@@ -11,10 +11,10 @@ K-means clustering is an unsupervised learning algorithm, which clusters data in
 # K-means algorithm steps
 
 **Step 1**
-Select the number of clusters (k).
+Select the number of clusters (K).
 
 **Step 2**
-Select random K points or centroids. These points are the initial centroids.
+Select randomly K points as cluster centers or centroids. These points are the initial centroids.
 
 **Step 3**
 Find the euclidean distance between the k points and the centroids. The following formula is used: sqrt(sum(a^2+b^2).
